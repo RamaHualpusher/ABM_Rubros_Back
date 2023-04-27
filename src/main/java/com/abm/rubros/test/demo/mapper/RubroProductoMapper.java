@@ -33,4 +33,9 @@ public class RubroProductoMapper {
         return rubroProducto;
     }
 
+    public void updateEntityFromDto(RubroProductoDto rubroProductoDto, RubroProducto rubroProducto) {
+        rubroProducto.setNombre(rubroProductoDto.getNombre());
+        rubroProducto.setActivo(rubroProductoDto.isActivo());
+    }
+
 }

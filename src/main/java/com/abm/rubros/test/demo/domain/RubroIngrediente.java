@@ -36,4 +36,6 @@ public class RubroIngrediente extends Base {
     public void setActivo(boolean activo) {
         this.activo = activo;
     }
+
+
 }

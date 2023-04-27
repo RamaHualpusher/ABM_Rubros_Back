@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("/api/rubros-ingredientes")
 public class RubroIngredienteController {
 
@@ -15,10 +16,27 @@ public class RubroIngredienteController {
     private RubroIngredienteService rubroIngredienteService;
 
     @GetMapping
-    public List<RubroIngredienteDto> getAllRubrosIngredientes() {return rubroIngredienteService.getAllRubrosIngredientes();}
+    public List<RubroIngredienteDto> getAllRubrosIngredientes() {
+        return rubroIngredienteService.getAllRubrosIngredientes();
+    }
+
+    @GetMapping("/{id}")
+    public RubroIngredienteDto getRubroIngredienteById(@PathVariable Long id) {
+        return rubroIngredienteService.getRubroIngredienteById(id);
+    }
 
     @PostMapping
     public RubroIngredienteDto createRubroIngrediente(@RequestBody RubroIngredienteDto rubroIngredienteDto) {
         return rubroIngredienteService.createRubroIngrediente(rubroIngredienteDto);
+    }
+
+    @PutMapping("/{id}")
+    public RubroIngredienteDto updateRubroIngrediente(@PathVariable Long id, @RequestBody RubroIngredienteDto rubroIngredienteDto) {
+        return rubroIngredienteService.updateRubroIngrediente(id, rubroIngredienteDto);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteRubroIngrediente(@PathVariable Long id) {
+        rubroIngredienteService.deleteRubroIngrediente(id);
     }
 }
